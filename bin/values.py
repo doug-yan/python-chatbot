@@ -2,8 +2,8 @@ import unirest
 from thesaurus import thesaurus as get_syn
 
 def getValues(entity, values):
-	suggestions = raw_input("Would you like some suggestions for your entity? (Y/N) ")
 	#TODO: Get suggestions working
+	# suggestions = raw_input("Would you like some suggestions for your entity? (Y/N) ")
 	# if suggestions == 'y' or suggestions == 'Y':
 	# 	url_base = 'https://wordsapiv1.p.mashape.com/words/'
 	# 	word = entity 

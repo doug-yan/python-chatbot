@@ -1,6 +1,5 @@
 from watson_developer_cloud import AlchemyLanguageV1
 
-
 def print_keywords(keywords):
 	print "These are the keywords that I could find: "
 	for i in range(0, len(keywords)):
@@ -19,6 +18,7 @@ def getKeywords():
 
 		if length == 0:
 			print "There are no keywords. Try another sentence."
+
 		
 		else:
 			print_keywords(json_response["keywords"])
@@ -27,4 +27,4 @@ def getKeywords():
 			if user_input == 'n' or user_input == 'N':
 				user_input = 'q'
 				break
-			user_input = raw_input("Enter a sentence that you want to analyze ('q' to quit): ")
+		user_input = raw_input("Enter a sentence that you want to analyze ('q' to quit): ")
