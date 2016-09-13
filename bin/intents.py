@@ -2,7 +2,7 @@ def getIntent():
 	intent_name = raw_input("Enter the intent name ('q' to quit): ")
 	quit = False
 	force_quit = 'n'
-	jsonString = '"intents":['
+	jsonString = ''
 
 	while intent_name != 'q':
 		num_data_points = 0
@@ -54,5 +54,5 @@ def getIntent():
 		intent_name = raw_input("Enter the intent name ('q' to quit): ")
 
 	jsonString = jsonString[:-1]
-	jsonString += ']'
+	jsonString += '],'
 	return jsonString

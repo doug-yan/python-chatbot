@@ -4,17 +4,17 @@ from keywords import getKeywords as get_keywords
 from entities import getEntities as get_entities
 
 def app():
-	entity = ''
-	values = []
-	jsonString = '{"name":"'
+	file = open('data.json','w')
+	json_string = '{"name":"'
 
 	conversation_name = raw_input("Enter a name for this conversation: ")
+	description = raw_input("Enter a description for this conversation: ")
 
-	jsonString += conversation_name
-	jsonString += '", '
-
+	json_string += conversation_name
+	json_string += '", '
+	json_string += '"intents":['
 	#Get intent and training data from user
-	jsonString += get_intent()
+	json_string += get_intent()
 
 	#Use AlchemyAPI to get keywords so that users can get an idea for what kind of entities they should create
 	get_analysis = raw_input("Would you like to use a few sentences to help you come up with entities? (Y/N) ")
@@ -22,13 +22,17 @@ def app():
 		get_keywords()
 
 	#Users create entities and values, and then get synonyms to those values
-	jsonString += get_entities(entity, values)
+	json_string += '"entities":['
+	json_string += get_entities()
 
-	jsonString += '}'
 
-	json_obj = json.loads(jsonString)
-	print (json.dumps(json_obj, indent=2))
+	json_string += '"language:":"en","metadata":null,"description":"' 
+	json_string += description
+	json_string += '",'
+	json_string += '"dialog_nodes":[]}'
 
-	# print jsonString
+	json_obj = json.dumps(json_string)
+
+	file.write(json_string)
 
 app()
